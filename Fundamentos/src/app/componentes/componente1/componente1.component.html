@@ -1,0 +1,152 @@
+<h1>Data Binding</h1>
+<h2>Interpolacion</h2>
+<!--from ts to html-->
+<p>El nombre de empleado 1 es: {{empleado1.nombre}}</p>
+
+<h2>2 Way Data Binding</h2>
+<!--solo funca con FormsModule importado-->
+<!--from ts to html ^ from html to ts-->
+<label for="twowaydb">{{empleado1.cargo}}</label>
+<input [(ngModel)]="empleado1.cargo" id="twowaydb" type="text">
+<button (click)="verCargoEmpleado1()">Ver Cargo Empleado 1</button>
+
+
+<h1>Directivas</h1>
+<h2>NG IF</h2>
+<button (click)="cambiarContratoEmpleado1()">Cambiar Contrato Empleado 1</button>
+<div *ngIf="empleado1.contratado">
+  <h3>Empleado 1</h3>
+  <ul>
+    <li>{{empleado1.nombre}}</li>
+    <li>{{empleado1.cargo}}</li>
+    <li>{{empleado1.edad}}</li>
+    <!--Otro ejemplo del ngIf-->
+    <li *ngIf="empleado1.contratado">Esta contratado</li>
+    <li *ngIf="!empleado1.contratado">No esta contratado</li>
+  </ul>
+</div>
+<br><br>
+<!--no aparece en el front-end (ni si quiera oculto) xq no esta contratado-->
+<button (click)="cambiarContratoEmpleado2()">Cambiar Contrato Empleado 2</button>
+<div *ngIf="empleado2.contratado">
+  <h3>Empleado 2</h3>
+  <ul>
+    <li>{{empleado2.nombre}}</li>
+    <li>{{empleado2.cargo}}</li>
+    <li>{{empleado2.edad}}</li>
+    <li>{{empleado2.contratado}}</li>
+  </ul>
+</div>
+<br><br><br>
+
+<h2>NG FOR</h2>
+<h3>Lista de empleados (sin index)</h3>
+<div *ngFor="let empleado of trabajadores">
+  <h4>Empleado</h4>
+  <ul>
+    <li>{{empleado.nombre}}</li>
+    <li>{{empleado.cargo}}</li>
+    <li>{{empleado.edad}}</li>
+    <!--Otro ejemplo del ngIf-->
+    <li *ngIf="empleado.contratado">Esta contratado</li>
+    <li *ngIf="!empleado.contratado">No esta contratado</li>
+  </ul>
+</div>
+<h3>Lista de empleados (con index)</h3>
+<div *ngFor="let empleado of trabajadores; let indice = index">
+  <h4>Empleado {{indice+1}}</h4>
+  <ul>
+    <li>{{empleado.nombre}}</li>
+    <li>{{empleado.cargo}}</li>
+    <li>{{empleado.edad}}</li>
+    <!--Otro ejemplo del ngIf-->
+    <li *ngIf="empleado.contratado">Esta contratado</li>
+    <li *ngIf="!empleado.contratado">No esta contratado</li>
+  </ul>
+</div>
+<br><br><br>
+
+<h2>NG SWITCH & NG STYLE</h2>
+<h3>Lista de empleados (switch/style)</h3>
+<div *ngFor="let empleado of trabajadores" [ngSwitch]="empleado.color">
+  <h4>Empleado</h4>
+  <ul>
+    <li>{{empleado.nombre}}</li>
+    <li>{{empleado.cargo}}</li>
+    <li>{{empleado.edad}}</li>
+    <!--Otro ejemplo del ngIf-->
+    <li *ngIf="empleado.contratado">Esta contratado</li>
+    <li *ngIf="!empleado.contratado">No esta contratado</li>
+    <li *ngSwitchCase="'red'"
+        [ngStyle]="{
+    'background':empleado.color,
+    'color':'white',
+    'padding':'10px'
+    }">ROJO
+    </li>
+    <li *ngSwitchCase="'blue'"
+        [ngStyle]="{
+    'background':empleado.color,
+    'color':'white',
+    'padding':'10px'
+    }">AZUL
+    </li>
+    <li *ngSwitchCase="'green'"
+        [ngStyle]="{
+    'background':empleado.color,
+    'color':'white',
+    'padding':'10px'
+    }">VERDE
+    </li>
+    <li *ngSwitchDefault>SIN COLOR</li>
+  </ul>
+</div>
+
+<h2>NG CLASS</h2>
+<!--forma i-->
+<!--<div [ngClass]="{-->
+<!--fondoRojo: empleado1.color == 'red',-->
+<!--fondoVerde: empleado1.color== 'green',-->
+<!--letraGrande: 1==1-->
+<!--}">-->
+<!--forma ii-->
+<div [ngClass]="['fondoVerde','letraGrande']">
+  <h3>Empleado 1</h3>
+  <ul>
+    <li>{{empleado1.nombre}}</li>
+    <li>{{empleado1.cargo}}</li>
+    <li>{{empleado1.edad}}</li>
+    <li>{{empleado1.contratado}}</li>
+    <li>{{empleado1.color}}</li>
+  </ul>
+</div>
+
+
+<br><br><br>
+
+<h1>Atributos</h1>
+<h2>Style</h2>
+<div [style.border]="empleado1.color == 'red' ? '2px solid red':'2px solid black'">
+  <h3>Empleado 1</h3>
+  <ul>
+    <li>{{empleado1.nombre}}</li>
+    <li>{{empleado1.cargo}}</li>
+    <li>{{empleado1.edad}}</li>
+    <li>{{empleado1.contratado}}</li>
+    <li>{{empleado1.color}}</li>
+  </ul>
+</div>
+
+<h2>Class</h2>
+<!--referencia a nuevo estilo de mi componente1.component.css-->
+<div [class.nuevoEstilo]="empleado2.color == 'pink'">
+  <h3>Empleado 2</h3>
+  <ul>
+    <li>{{empleado2.nombre}}</li>
+    <li>{{empleado2.cargo}}</li>
+    <li>{{empleado2.edad}}</li>
+    <li>{{empleado2.contratado}}</li>
+    <li>{{empleado2.color}}</li>
+  </ul>
+</div>
+

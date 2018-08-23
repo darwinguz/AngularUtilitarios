@@ -1,0 +1,15 @@
+.fondoRojo {
+  background: lightcoral;
+}
+
+.fondoVerde {
+  background: lightgreen;
+}
+
+.nuevoEstilo {
+  background: lightpink;
+}
+
+.letraGrande {
+  font-size: 30px;
+}
