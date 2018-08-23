@@ -21,6 +21,7 @@ export class AutorizacionService implements CanActivate {
       // redirigerle al login
       const url = ['login'];
       alert('No ha iniciado sesion aun!');
+      console.log('Redireccionando a Login...');
       this._router.navigate(url);
       return permisos;
     }

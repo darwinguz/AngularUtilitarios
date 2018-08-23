@@ -17,7 +17,7 @@ export const RUTAS_APP: Routes = [
   ,
     children: [
       {
-        path: 'usuario/:usuarioID/:universidad',
+        path: 'usuario/:userId/:universidad',
         component: RutaUsuarioComponent
       },
       {
@@ -38,12 +38,12 @@ export const RUTAS_APP: Routes = [
     path: 'no-encontrado',
     component: NoEncontradoComponent
   },
-  {
+  {//cuando la url no tenga nada carga HOME
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
+  {//cuando no exista la ruta (404) se dirige a NOENCONTRADO
     path: '**',
     component: NoEncontradoComponent
   }

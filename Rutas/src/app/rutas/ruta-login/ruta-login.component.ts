@@ -8,7 +8,7 @@ import {CredencialesService} from "../../servicios/credenciales.service";
   styleUrls: ['./ruta-login.component.css']
 })
 export class RutaLoginComponent implements OnInit {
-  password = '';
+  password = 'activate';
 
   constructor(private _credencialesService: CredencialesService,
               private _router: Router,
@@ -22,10 +22,7 @@ export class RutaLoginComponent implements OnInit {
     this._credencialesService
       .login(this.password);
     const rutaHomeUsuario = [
-      '/home', // Segmentos
-      'usuario', // Segmentos
-      1, // Segmentos
-      'epn' // Segmentos
+      '/home' // Segmentos
     ];
     this._router.navigate(rutaHomeUsuario);
 

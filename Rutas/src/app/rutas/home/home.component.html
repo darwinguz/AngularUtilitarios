@@ -1,3 +1,15 @@
 <p>
   home works!
 </p>
+<div>
+  <label for="id">ID</label>
+  <input id="id" type="text" [(ngModel)]="id">
+</div>
+
+<div>
+  <label for="universidad">Universidad</label>
+  <input id="universidad" type="text" [(ngModel)]="universidad">
+</div>
+<button (click)="goToUsuario()">Ir</button>
+
+<router-outlet></router-outlet>

@@ -2,17 +2,15 @@
 <div class="row">
   <div class="col-sm-6">
 
-    <ul>
-      <li>
-        <a [routerLink]="['/home']">Home</a>
-      </li>
-      <li>
-        <a [routerLink]="['/faq']">FAQ</a>
-      </li>
-      <li>
-        <a [routerLink]="['/login']">Login</a>
-      </li>
-    </ul>
+    <!--menu de navegacion-->
+    <nav>
+      <!--routerLinkActive: sirve para resaltar con algun estilo la ruta actual-->
+      <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
+      -
+      <a [routerLink]="['/faq']" [routerLinkActive]="['activado']">FAQ</a>
+      -
+      <a [routerLink]="['/login']" [routerLinkActive]="['activado']">Login</a>
+    </nav>
 
   </div>
   <div class="col-sm-6">
