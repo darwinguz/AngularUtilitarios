@@ -1,0 +1,10 @@
+<h2>Ejemplo Ropa</h2>
+<label for="txtropa">Ropa nueva</label>
+<input id="txtropa" #txt_ropa>
+<button (click)="agregar(txt_ropa.value)">Agregar</button>
+<ul>
+  <li *ngFor="let item of ropas; let indice=index">
+    {{indice+' '+item}}
+    <button (click)="eliminar(indice)">Eliminar</button>
+  </li>
+</ul>
