@@ -15,8 +15,14 @@ export class RutaUsuarioComponent implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute) {
     //obtencion de parametros
     this.idUsuario = +this._activatedRoute.snapshot.paramMap.get('userId');
-    this.universidad = this._activatedRoute.snapshot.paramMap.get('universidad');
-    //OJO si se quiere actualizar desde el padre se debe usar inputs
+    // this.universidad = this._activatedRoute.snapshot.paramMap.get('universidad');
+    //OJO si se quiere actualizar desde el padre se debe usar inputs u observables como aqui:
+    this._activatedRoute.params.subscribe(value => {
+      console.info(value);
+      this.universidad = value['universidad'];
+    });
+
+
     console.log('paso en el constructor...')
   }
 
